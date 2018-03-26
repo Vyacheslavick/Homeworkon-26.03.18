@@ -1,0 +1,30 @@
+package com.company;
+
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите количество предложений: ");
+        int countOfTheRows = Integer.valueOf(in.nextLine());
+        String[] rowArrey = new String[countOfTheRows];
+        for (int i = 0; i < countOfTheRows; i++) {
+            System.out.println(String.format("Введите %d-ое предложение: ", i + 1));
+            String textRow = in.nextLine();
+            rowArrey[i] = textRow;
+        }
+        int microLenght = rowArrey[0].length();
+        String minRow = rowArrey[0];
+        int smallestRow = 0;
+        for (int i = 0; i < countOfTheRows; i++) {
+            if (microLenght > rowArrey[i].length()) {
+                microLenght = rowArrey[i].length();
+                minRow = rowArrey[i];
+                smallestRow = i;
+            }
+        }
+        System.out.println("Наименьшее предложение: " + minRow + String.format(" под номером %d", (smallestRow + 1)));
+    }
+}
