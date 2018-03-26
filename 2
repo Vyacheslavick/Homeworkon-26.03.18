@@ -1,0 +1,35 @@
+package com.company;
+
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введите количество предложений: ");
+        int countOfTheRows = Integer.valueOf(in.nextLine());
+        String[] rowArrey = new String[countOfTheRows];
+        for (int i = 0; i < countOfTheRows; i++) {
+            System.out.println(String.format("Введите %d-ое предложение: ", i + 1));
+            String textRow = in.nextLine();
+            rowArrey[i] = textRow;
+        }
+        int sum = 0;
+
+        for (int i = 0; i < countOfTheRows; i++) {
+            int length = rowArrey[i].length();
+            sum = sum + length;
+        }
+        float middle = sum / countOfTheRows;
+        for (int i = 0; i < countOfTheRows; i++) {
+            float smallRow = rowArrey[i].length();
+            if (smallRow < middle) {
+                String midRow = rowArrey[i];
+                int numRow = i;
+
+                System.out.println("Предложение с количеством символов ниже среднего: " + midRow + String.format(" под номером %d ", (numRow + 1)));
+            }
+        }
+    }
+}
